@@ -1,0 +1,29 @@
+ <loading hidden="{{hidden}}" bindchange="loadingChange">
+    加载中...
+  </loading>
+
+<scroll-view class="section {{cssPadding}}" scroll-y="true" bindscrolltolower="loadMore">
+
+	<view class="first-img-section" wx:if="{{firstImgUrls.length > 0}}">
+		<image class="img" src="{{firstImgUrls[0].url}}?imageMogr2/thumbnail/!498x498r/gravity/Center/crop/498x496" bindtap="previewOpt" data-current="{{firstImgUrls[0].url}}"></image>
+
+		<view class="txt-section">
+			<text class="theme">{{theme}}</text>
+			<text class="sponsor">{{sponsor}}</text>
+		</view>
+	</view>
+	
+	<image wx:for="{{elseImgUrls}}" wx:data="list" wx:key="list.url" class="img-item" src="{{item.url}}?imageMogr2/thumbnail/!248x248r/gravity/Center/crop/248x248" bindtap="previewOpt" data-current="{{item.url}}"></image>
+
+
+	<view class="tips" wx:if="{{loading}}">
+		<view wx:if="{{hasMore}}" class="tip">
+			<text>玩命的加载中...</text>
+		</view>
+		<view wx:else class="tip">
+			<text>没有更多内容了</text>
+		</view>
+	</view>
+</scroll-view>
+
+<button class="btn upload" bindtap="uploadImgOpt" wx:if="{{isManager}}"></button>

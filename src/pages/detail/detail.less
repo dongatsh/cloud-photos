@@ -1,0 +1,102 @@
+.overflow-text() {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.section {
+	position: fixed;
+	height: 100%;
+	z-index: 1;
+	box-sizing: border-box;
+	padding-bottom: 100rpx;
+	top: 0;
+	left: 0;
+	padding: 0;
+	padding-bottom: 20rpx;
+	&.pb0 {
+		padding-bottom: 0;
+	}
+	.first-img-section {
+		float: left;
+		width: 498rpx;
+		height: 496rpx;
+		margin-right: 2rpx;
+		margin-bottom: 2rpx;
+		overflow: hidden;
+		position: relative;
+
+		.img {
+			width: 100%;
+			height: 498rpx;
+		}
+
+		.txt-section {
+			width: 100%;
+			position: absolute;
+			left: 0;
+			top: 200rpx;	
+			background-color: rgba(0, 0, 0, 0.3);
+			padding-top: 20rpx;
+			padding-bottom: 20rpx;
+			text-align: center;
+			color: #fff;
+
+			.theme {
+				font-size: 40rpx;
+				display: block;
+				margin-bottom: 5rpx;
+				height: 50rpx;
+				line-height: 50rpx;
+				.overflow-text();
+			}
+			.sponsor{
+				font-size: 26rpx;
+				display: block;
+				height: 35rpx;
+				line-height: 35rpx;
+				.overflow-text();
+			}
+		}
+	}
+
+	.img-item {
+		float: left;
+		width: 248rpx;
+		height: 248rpx;
+		margin-right: 2rpx;
+		margin-bottom: 2rpx;
+	}
+
+	.tips {
+		margin-top: 20rpx;
+		clear: both;
+		.tip {
+			font-size: 32rpx;
+			color: #999;
+			text-align: center;
+		}
+	}
+}
+
+.btn {
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
+    border: none;
+    background-image: url(/dist/images/p2.png);
+    background-size: 64rpx 64rpx;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 80rpx;
+    height: 80rpx;
+    position: fixed;
+    right: 60rpx;
+    bottom: 80rpx;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 200;
+    &:after {
+        border: none;
+    }
+}
+

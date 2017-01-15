@@ -1,0 +1,32 @@
+
+<scroll-view class="section {{cssPadding}}" scroll-y="true" bindscrolltolower="loadMore">
+	<view wx:for="{{albumPackList}}" wx:data="list" wx:key="list._id">
+		<navigator url="../detail/detail?id={{item._id}}" class="list-item" >
+			<image class="img" src="{{item.cover}}?imageMogr2/thumbnail/!256x256r/gravity/Center/crop/256x256"></image>
+			<text class="name">{{item.theme}}</text>
+		</navigator>
+	</view>
+	<view class="tips" wx:if="{{loading}}">
+		<view wx:if="{{hasMore}}" class="tip">
+			<text>玩命的加载中...</text>
+		</view>
+		<view wx:else class="tip">
+			<text>没有更多内容了</text>
+		</view>
+	</view>
+</scroll-view>
+
+<button class="new-btn" bindtap="newFileOpt" wx:if="{{isManager}}">
+	<text class="icon">新建相册</text>
+</button>
+
+<view class="mask" wx:if="{{newFile}}"></view>
+<view class="add-new-file" wx:if="{{newFile}}">
+    <form bindsubmit="confirmNewFileOpt" bindreset="cancelNewFileOpt">
+        <text class="title">新建相册</text>
+        <input placeholder="主题" name="theme" focus="true" class="file-name {{themeDisabled}}" bindfocus="submitEnabledOpt"/>
+        <input placeholder="主办方" name="sponsor" class="file-name {{sponsorDisabled}}" bindfocus="submitEnabledOpt"/>
+        <button class="btn cancel" formType="reset">取消</button>
+        <button class="btn confirm" formType="submit">确定</button>
+    </form>
+</view>

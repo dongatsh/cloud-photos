@@ -1,0 +1,31 @@
+{
+  "name": "团建宝官网微信小程序",
+  "version": "1.0.0",
+  "description": "将团建宝官网搬到微信小程序里面",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "weui",
+    "wxss"
+  ],
+  "author": "tuanjianbao team",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.6.0",
+    "del": "^2.2.2",
+    "es6-promise": "^4.0.5",
+    "gulp-less": "^3.3.0",
+    "gulp-postcss": "^6.2.0",
+    "gulp-qiniu": "^0.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-rev": "^7.1.2",
+    "gulp-rev-collector": "^1.1.1"
+  }
+}
