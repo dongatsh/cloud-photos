@@ -1,0 +1,21 @@
+<view class="manage-wrapper">
+	<view class="title"></view>
+	<view class="choose-item-wrapper">
+		<view class="choose-item" bindtap="popupAlbumWrapperOpt" wx:if="{{isThemeEdit}}">{{theme}} <image class="arrow" src="/dist/images/right-arrow.png"></image></view>
+
+		<navigator url="../album_qrcode/album_qrcode?id={{id}}&theme={{theme}}" class="choose-item">相册二维码 <image class="arrow" src="/dist/images/right-arrow.png"></image></navigator>
+
+		<navigator url="../upload_images_auth/upload_images_auth?id={{id}}&uploadPrivilege={{uploadPrivilege}}" class="choose-item" wx:if="{{isThemeEdit}}">设置谁可以添加照片 <image class="arrow" src="/dist/images/right-arrow.png"></image></navigator>
+	</view>
+	<navigator url="../images_manage/images_manage?id={{id}}" class="last-choose-item">管理照片 <image class="arrow" src="/dist/images/right-arrow.png"></image></navigator>
+
+</view>
+
+<view class="mask" wx:if="{{changeThemeNameFlag}}" bindtap="cancelNewAlbumOpt"></view>
+<view class="ablum-popup-wrapper" wx:if="{{changeThemeNameFlag}}">
+    <form bindsubmit="saveNewThemeNameOpt" bindreset="cancelNewAlbumOpt">
+        <view class="title">修改相册<button class="reset" formType="reset"></button></view>
+        <input placeholder="请输入相册名称" placeholder-class="album-name-placeholder" name="theme" focus="true" value="{{theme}}" class="album-name {{themeDisabled}}"/>
+        <button class="confirm" formType="submit">确定</button>
+    </form>
+</view>

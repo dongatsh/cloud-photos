@@ -1,0 +1,88 @@
+@import url('../../common/less/var.less');
+.user-list-wrapper {
+	padding-bottom: 150rpx;
+	.list {
+		border-top: 1rpx solid @bb;
+		border-bottom: 1rpx solid @bb;
+		.item {
+			height: 110rpx;
+			line-height: 109rpx;
+			border-bottom: 1rpx solid @bb;
+			margin-left: 20rpx;
+
+			&:last-child {
+				border-bottom: none;
+			}
+			&:after {
+				content: "";
+				display: block;
+				clear: both;
+			}
+
+			.icon {
+				float: left;
+				width: 40rpx;
+				height: 40rpx;
+				margin-left: 10rpx;
+				margin-top: 35rpx;
+				margin-right: 26rpx;
+				background-image: url(/dist/images/user-no-selection.png);
+				background-repeat: no-repeat;
+				background-size: 100%;
+
+				&.active {
+					background-image: url(/dist/images/user-selection.png);
+				}
+				&.disabled {
+					background-image: url(/dist/images/user-disabled-selection.png);
+				}
+			}
+			.headimg {
+				width: 64rpx;
+				height: 64rpx;
+				margin-right: 16rpx;
+				margin-top: 23rpx;
+				float: left;
+			}
+			.nickname {
+				float: left;
+				font-size: 28rpx;
+				line-height: 109rpx;
+				color: #333;
+				text-align: left;
+			}
+		}
+	}
+	.number-of-people {
+		text-align: center;
+		color: #c6c6c6;
+		font-size: 28rpx;
+		margin-top: 45rpx;
+	}
+}
+
+.btn-section {
+	height: 135rpx;
+	background-color: rgba(255, 255, 255, 0.8);
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 2;
+
+	.btn {
+		width: 624rpx;
+		height: 88rpx;
+		line-height: 88rpx;
+		color: #fff;
+		text-align: center;
+		font-size: 34rpx;
+		background-color: rgba(255, 99, 112, 1);
+		border-radius: 5rpx;
+		display: block;
+		margin: 23rpx auto 0;
+		&:after {
+			border: none;
+		}
+	}
+}

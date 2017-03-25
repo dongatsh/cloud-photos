@@ -20,12 +20,21 @@
     "autoprefixer": "^6.6.0",
     "del": "^2.2.2",
     "es6-promise": "^4.0.5",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-if": "^2.0.2",
     "gulp-less": "^3.3.0",
     "gulp-postcss": "^6.2.0",
     "gulp-qiniu": "^0.2.4",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-rev": "^7.1.2",
-    "gulp-rev-collector": "^1.1.1"
+    "gulp-rev-collector": "^1.1.1",
+    "md5": "^2.2.1",
+    "run-sequence": "^1.2.2"
   }
 }

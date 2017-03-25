@@ -1,0 +1,28 @@
+<loading hidden="{{hidden}}">
+	加载中...
+</loading>
+<view class="empty-wrapper" wx:if="{{isEmtpy}}">
+    <text class="title">你还没添加过照片</text>
+</view>
+<view class="images-list-wrapper" wx:else>
+	<scroll-view class="section" scroll-y="true" bindscrolltolower="loadMore" style="height:{{scrollViewHeight}}px">
+		<view class="img-item" wx:for="{{elseImgUrls}}" wx:data="list" wx:key="list.url">
+			<image class="img" src="{{item.url}}?imageMogr2/thumbnail/!248x248r/gravity/Center/crop/248x248"></image>
+			<view class="del-choose {{chooseDeleteImgClass[index+1]}}" data-current="{{item.url}}" data-num="{{index+1}}" data-unionid="{{item.unionid}}" bindtap="chooseImgToDeleteOpt">
+				<text class="name">{{item.nickname}}</text>
+			</view>
+		</view>
+		<view class="tips" wx:if="{{loading}}">
+			<view class="tip">
+				<text>加载中...</text>
+			</view>
+		</view>
+		<view class="remark" wx:elif="{{!loading && !isEmpty}}">选择你要删除的照片</view>
+	</scroll-view>
+</view>
+
+<view class="delete-wrapper" wx:if="{{!isEmtpy}}">
+	<button class="cancel" bindtap="cancelDeleteImgsOpt">取消</button>
+	<text class="num">已选择{{chooseDeleteImgNum}}张照片</text>
+	<button class="confirm" bindtap="confirmDeleteImgsOpt">删除</button>
+</view>

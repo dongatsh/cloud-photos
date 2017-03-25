@@ -1,0 +1,16 @@
+<view class="user-list-wrapper">
+	<view class="list">
+		<view class="item" wx:for="{{participatorlist}}" wx:for-index="index" wx:data="list" wx:key="list.avatarurl" data-index="{{index}}" data-upload-mark="{{item.upload}}" bindtap="changeUserAuthStatusOpt">
+			<view class="icon active" wx:if="{{participatorlist[index].upload == 1}}"></view>
+			<view class="icon disabled" wx:elif="{{participatorlist[index].upload == -1}}"></view>
+			<view class="icon" wx:else></view>
+			<image class="headimg" src="{{item.avatarurl}}"></image>
+			<view class="nickname">{{item.nickname}}</view>
+		</view>
+	</view>
+	<view class="number-of-people">共{{participatorlist.length}}人</view>
+</view>
+
+<div class="btn-section">
+    <button class="btn" bindtap="submitUploadImagesAuthOpt">确定</button>
+</div>

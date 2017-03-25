@@ -1,32 +1,65 @@
+<loading wx:if="{{hidden}}" bindchange="loadingChange">
+    加载中...
+</loading>
+<view class="empty-wrapper" wx:if="{{isEmtpy}}">
+    <text class="title">我们</text>
+    <text class="title">在一起的每个瞬间，</text>
+    <text class="title">一起留驻。</text>
+    <view class="methods-introduce">
+        <text class="txt" bindtap="goToIntroduceOpt">至少有8种用法 ></text>
+    </view>
+</view>
+<view class="content" wx:else>
+    <view class="section">
+    	<view wx:for="{{albumPackList}}" wx:data="list" wx:key="list._id" catchlongtap="showDeleteAlbumModalOpt" catchtap="goToAlbumDetail" data-id="{{item._id}}" class="click-section" hover="true" hover-stay-time="0">
+    		<view class="list-item">
+                <view class="imgs-section" wx:if="{{item.picture_num == 0}}">
+                    <image class="img" src="/dist/images/no-photo.png?imageMogr2/thumbnail/!200x200r/gravity/Center/crop/200x200"></image>
+                </view>
+                <view class="imgs-section" wx:elif="{{item.picture_num < 3}}">
+                    <image wx:for="{{item.piclist}}" wx:data="list" wx:key="list.addtime" wx:for-item="pic" class="img" src="{{pic.url}}?imageMogr2/thumbnail/!200x200r/gravity/Center/crop/200x200"></image>
+                </view>
 
-<scroll-view class="section {{cssPadding}}" scroll-y="true" bindscrolltolower="loadMore">
-	<view wx:for="{{albumPackList}}" wx:data="list" wx:key="list._id">
-		<navigator url="../detail/detail?id={{item._id}}" class="list-item" >
-			<image class="img" src="{{item.cover}}?imageMogr2/thumbnail/!256x256r/gravity/Center/crop/256x256"></image>
-			<text class="name">{{item.theme}}</text>
-		</navigator>
-	</view>
-	<view class="tips" wx:if="{{loading}}">
-		<view wx:if="{{hasMore}}" class="tip">
-			<text>玩命的加载中...</text>
-		</view>
-		<view wx:else class="tip">
-			<text>没有更多内容了</text>
-		</view>
-	</view>
-</scroll-view>
+                <view class="imgs-section" wx:else>
+                    <image wx:for="{{item.piclist}}" wx:data="list" wx:key="list.addtime" wx:for-item="pic" class="img" src="{{pic.url}}?imageMogr2/thumbnail/!200x200r/gravity/Center/crop/200x200"></image>
+                </view>
 
-<button class="new-btn" bindtap="newFileOpt" wx:if="{{isManager}}">
-	<text class="icon">新建相册</text>
-</button>
+                <view class="introduce">
+                    <text class="name">{{item.theme}}</text>
+                    <text class="num">{{item.participator_num}}人 · {{item.picture_num}}张</text>
+                </view>
+            </view>
+    	</view>
+        <view class="methods-introduce" wx:if="{{albumPackList.length > 0 && albumPackList.length < 3}}" bindtap="goToIntroduceOpt">
+            <text class="txt">至少有8种用法 ></text>
+        </view>
+    	<view class="tips" wx:if="{{loading}}">
+    		<view wx:if="{{hasMore}}" class="tip">
+    			<text>加载中...</text>
+    		</view>
+    	</view>
+    </view>
 
-<view class="mask" wx:if="{{newFile}}"></view>
-<view class="add-new-file" wx:if="{{newFile}}">
-    <form bindsubmit="confirmNewFileOpt" bindreset="cancelNewFileOpt">
-        <text class="title">新建相册</text>
-        <input placeholder="主题" name="theme" focus="true" class="file-name {{themeDisabled}}" bindfocus="submitEnabledOpt"/>
-        <input placeholder="主办方" name="sponsor" class="file-name {{sponsorDisabled}}" bindfocus="submitEnabledOpt"/>
-        <button class="btn cancel" formType="reset">取消</button>
-        <button class="btn confirm" formType="submit">确定</button>
+</view>
+<view class="new-ablum-section">
+    <button class="new-ablum-btn" bindtap="newAlbumOpt">
+    	<text class="icon">新建相册</text>
+    </button>
+</view>
+
+<view class="mask" wx:if="{{newAlbumFlag || showDeleteAlbumModal}}" bindtap="hiddenMask" catchtouchmove="hiddenMask"></view>
+<view class="ablum-popup-wrapper" wx:if="{{newAlbumFlag}}">
+    <form bindsubmit="confirmNewAlbumOpt" bindreset="cancelNewAlbumOpt">
+        <view class="title">新建相册<button class="reset" formType="reset"></button></view>
+        <input placeholder="请输入相册名称" placeholder-class="album-name-placeholder" name="theme" focus="true" class="album-name {{themeDisabled}}" bindfocus="submitEnabledOpt"/>
+        <button class="confirm" formType="submit">确定</button>
     </form>
+</view>
+
+<view class="delete-album-modal {{moveAlbumModalClass}}" wx:if="{{showDeleteAlbumModal}}">
+    <view class="delete-btn" catchtap="deleteAlbumOpt">
+        <text class="tit">删除</text>
+        <text class="sub-tit">仅将相册从本页移除，相册内照片会被保留</text>
+    </view>
+    <view class="cancel-btn" bindtap="hiddenMask">取消</view>
 </view>

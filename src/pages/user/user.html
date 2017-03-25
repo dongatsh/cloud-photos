@@ -1,0 +1,6 @@
+<view class="section">
+	<view class="user-info" wx:for="{{participatorlist}}" wx:data="list" wx:key="list.avatarurl">
+		<image class="headimg" src="{{item.avatarurl}}"></image>
+		<view class="name">{{item.nickname}}</view>
+	</view>
+</view>

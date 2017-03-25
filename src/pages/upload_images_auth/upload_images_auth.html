@@ -1,0 +1,20 @@
+<view class="auth-selection-wrapper">
+	<view class="choose-item" bindtap="chooseUploadImagesAuthOpt" data-privilege="0">
+		<image class="red-hook" src="/dist/images/red-hook.png" wx:if="{{uploadPrivilege == 0}}"></image>
+		<view class="t1">所有人</view>
+		<view class="t2">看到本相册的人均可添加照片</view>
+	</view>
+	<view class="choose-item" bindtap="chooseUploadImagesAuthOpt" data-privilege="1">
+		<image class="red-hook" src="/dist/images/red-hook.png" wx:if="{{uploadPrivilege == 1}}"></image>
+		<view class="t1">仅创建人</view>
+		<view class="t2">只有本相册创建人可添加照片</view>
+	</view>
+	<view class="choose-item" bindtap="goToUserAuthOpt">
+		<image class="red-hook" src="/dist/images/red-hook.png" wx:if="{{uploadPrivilege == 2}}"></image>
+		<view class="t1">设置可添加的人</view>
+		<view class="t2">选择可添加照片的人</view>
+		<image class="arrow" src="/dist/images/right-arrow.png"></image>
+	</view>
+</view>
+
+<button class="btn" bindtap="submitUploadImagesAuthOpt">确定</button>

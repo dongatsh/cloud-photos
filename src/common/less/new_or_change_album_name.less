@@ -1,0 +1,79 @@
+.ablum-popup-wrapper {
+	background-color: #fbfbfd;
+	border-radius: 10rpx;
+	width: 640rpx;
+	position: fixed;
+	z-index: 200;
+	left: 50%;
+	margin-left: -320rpx;
+	top: 10%;
+
+	.title {
+		text-align: center;
+		font-size: 35rpx;
+		color: #333;
+		height: 97rpx;
+		line-height: 97rpx;
+		display: block;
+		color: #333;
+		border-bottom: 1px solid #f1f1f1;
+		position: relative;
+		margin-bottom: 30rpx;
+
+		.reset {
+			width: 40rpx;
+			height: 40rpx;
+			position: absolute;
+			border: none;
+			top: 28rpx;
+			right: 28rpx;
+			padding: 0;
+			border-radius: 0;
+			background-image: url(/dist/images/close.png);
+			background-size: 25rpx;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-color: #fbfbfb;
+
+			&:after {
+				border: none;
+			}
+		}
+	}
+
+	.album-name {
+		display: block;
+		width: 560rpx;
+		height: 90rpx;
+		line-height: 88rpx;
+		border-radius: 8rpx;
+		border: 1rpx solid #e5e5e5;
+		font-size: 35rpx;
+		color: #333;
+		padding: 0 30rpx;
+		display: block;
+		margin: 0 auto 30rpx;
+		background-color: #ffffff;
+		box-sizing: border-box;
+
+		&.disabled {
+			border: 1px solid #e14800;
+		}
+	}
+	.album-name-placeholder {
+		color: #c3c3c3;
+	}
+
+	.confirm {
+		width: 560rpx;
+		height: 90rpx;
+		font-size: 35rpx;
+		border-radius: 8rpx;
+		background-color: #ff6370;
+		text-align: center;
+		color: #fff;
+		box-sizing: border-box;
+		margin-bottom: 35rpx;
+	}
+
+}

@@ -1,29 +1,44 @@
- <loading hidden="{{hidden}}" bindchange="loadingChange">
-    加载中...
-  </loading>
+<loading hidden="{{hidden}}">
+	加载中...
+</loading>
 
-<scroll-view class="section {{cssPadding}}" scroll-y="true" bindscrolltolower="loadMore">
+<view class="content">
+	<view class="section">
+		<view class="album-info-wrapper">
+			<text class="name">{{theme}}</text>
+			<text class="date">{{addtime}}</text>
+			<view class="user-section">
+				<view class="list" wx:if="{{participatorlistCount > 4}}">
+					<image class="headimg" wx:for="{{participatorlist}}" wx:data="list" wx:key="list.avatarurl" src="{{item.avatarurl}}" bindtap="goToUserListOpt"></image>
+					<image class="headimg" src="/dist/images/three-spot.png" bindtap="goToUserListOpt"></image>
+					<text class="num">等{{participatorlistCount}}人 · {{pictureNum}}张照片</text>
+				</view>
+				<view class="list" wx:else>
+					<image class="headimg" wx:for="{{participatorlist}}" wx:data="list" wx:key="list.avatarurl" src="{{item.avatarurl}}" bindtap="goToUserListOpt"></image>
+					<text class="num">{{participatorlistCount}}人 · {{pictureNum}}张照片</text>
+				</view>
+			</view>
+			<view class="manage" bindtap="goToManagerOpt">管理</view>
+		</view>
 
-	<view class="first-img-section" wx:if="{{firstImgUrls.length > 0}}">
-		<image class="img" src="{{firstImgUrls[0].url}}?imageMogr2/thumbnail/!498x498r/gravity/Center/crop/498x496" bindtap="previewOpt" data-current="{{firstImgUrls[0].url}}"></image>
-
-		<view class="txt-section">
-			<text class="theme">{{theme}}</text>
-			<text class="sponsor">{{sponsor}}</text>
+		<view class="imgs-section" wx:if="{{isEmtpy}}">
+		    <text class="remark">尚无照片</text>
+		</view>
+		<view class="imgs-section" wx:else>
+			<view class="img-item" wx:for="{{elseImgUrls}}" wx:data="list" wx:key="list.url">
+				<image class="img" src="{{item.url}}?imageMogr2/thumbnail/!248x248r/gravity/Center/crop/248x248" bindtap="previewOpt" data-current="{{item.url}}"></image>
+			</view>
+		</view>
+		<view class="tips" wx:if="{{loading}}">
+			<view class="tip">
+				<text>加载中...</text>
+			</view>
 		</view>
 	</view>
-	
-	<image wx:for="{{elseImgUrls}}" wx:data="list" wx:key="list.url" class="img-item" src="{{item.url}}?imageMogr2/thumbnail/!248x248r/gravity/Center/crop/248x248" bindtap="previewOpt" data-current="{{item.url}}"></image>
+</view>
 
-
-	<view class="tips" wx:if="{{loading}}">
-		<view wx:if="{{hasMore}}" class="tip">
-			<text>玩命的加载中...</text>
-		</view>
-		<view wx:else class="tip">
-			<text>没有更多内容了</text>
-		</view>
-	</view>
-</scroll-view>
-
-<button class="btn upload" bindtap="uploadImgOpt" wx:if="{{isManager}}"></button>
+<div class="add-photoes-section" wx:if="{{isAllowUpload == 1}}">
+    <button class="add-photoes-btn" bindtap="uploadImgOpt">
+    	<text class="icon">添加照片</text>
+    </button>
+</div>

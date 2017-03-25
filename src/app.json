@@ -1,16 +1,25 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/detail/detail"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "团建相册",
-    "navigationBarTextStyle":"black"
-  },
-  "networkTimeout": {
-    "request": 10000,
-    "downloadFile": 10000
-  }
+    "pages":[
+        "pages/index/index",
+        "pages/detail/detail",
+        "pages/user/user",
+        "pages/manage/manage",
+        "pages/album_qrcode/album_qrcode",
+        "pages/upload_images_auth/upload_images_auth",
+        "pages/upload_images_user_auth/upload_images_user_auth",
+        "pages/images_manage/images_manage",
+        "pages/introduce/introduce"
+    ],
+    "window":{
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "一起相册",
+        "navigationBarTextStyle":"black",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#fff",
+        "backgroundTextStyle": "dark"
+    },
+    "networkTimeout": {
+        "request": 60000,
+        "downloadFile": 60000
+    }
 }
